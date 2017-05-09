@@ -1,0 +1,29 @@
+.containerBox {
+    position: relative;
+    display: inline-block;
+}
+.text-box {
+    position: absolute;
+    height: 65%;
+    text-align: center;
+    width: 135%;
+}
+.text-box:before {
+   content: '';
+   display: inline-block;
+   height: 100%;
+   vertical-align: middle;
+}
+p {
+   display: inline-block;
+   max-width: 200px;
+}
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+textarea {
+  width: 100%;
+}

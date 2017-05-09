@@ -1,15 +1,57 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-6"></div>
-    <div class="col-xs-3" centered>
-      <textarea class="form-control input-lg" type="text" [(ngModel)]="dinosaursays"></textarea>
+<div class="containerBox">
+    <div class="text-box">
+        <p>{{ (dinosaursays | async)?.text }}</p>
     </div>
-    <div class="col-xs-3"></div>
-  </div>
-  <div class="row">
-    <img src="../assets/sotto.png" class="img-responsive">
-  </div>
-  <div class="row">
-    <div class="col-md-2 col-md-offset-5"><button (click)="shareUrl()" class="btn btn-default btn-lg btn-block">Share</button></div>
+    <img class="img-responsive" src="../assets/placeholder.png"/>
+</div>
+
+<div class="row">
+  <div class="col-md-6 col-md-push-3">
+  <div class="panel panel-default">
+    <div class="panel-heading">Really really interesting things Saurs might say</div>
+    <div class="panel-body">
+      <form class="form control">
+        <div class="form-group">
+          <textarea class="form-control" type="text" #newsentence placeholder=""></textarea>
+          <button class="btn btn-default" (click)="addItem(newsentence.value)">Save</button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6 col-md-push-3">
+  <div class="panel panel-default">
+    <div class="panel-heading">Really really interesting things Saurs said</div>
+    <div class="panel-body">
+      <table class="table">
+        <tbody>
+          <tr *ngFor="let item of items | async">
+            <!-- <td>{{item.$key}}</td> -->
+            <td>{{item.text}}</td>
+            <td>
+              <button class="btn btn-danger pull-right" (click)="deleteItem(item.$key)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+              <!-- <button class="btn btn-default pull-right" (click)="shareUrl(item.$key)">Share</button> -->
+              <button type="button" class="btn btn-success pull-right" (click)="modal.open(item.$key)">Share saurs</button>
+              <button class="btn btn-default pull-right" (click)="updateSentence(item.$key)"><a onclick="scroll(0,0)">
+              <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+
+<modal #modal>
+    <modal-header [show-close]="true">
+        <h4 class="modal-title">Share a Sauro!</h4>
+    </modal-header>
+    <modal-body>
+        <code>{{sendUrl}}</code>
+    </modal-body>
+    <modal-footer [show-default-buttons]="true"></modal-footer>
+</modal>
