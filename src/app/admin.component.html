@@ -1,0 +1,45 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Oh no! Saurs! <strong>Admin</strong></a>
+    </div>
+  </div>
+</nav>
+<div class="row">
+  <div class="col-md-6 col-md-push-3">
+  <div class="panel panel-default">
+    <div class="panel-heading">Really really interesting things Saurs said</div>
+    <div class="panel-body">
+      <table class="table">
+        <tbody>
+          <tr *ngFor="let item of items | async">
+            <td>{{item.text}}</td>
+            <td>
+              <button class="btn btn-danger pull-right" (click)="deleteItem(item.$key)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+              <button type="button" class="btn btn-success pull-right" (click)="modal.open(item.$key)">Share</button>
+              <button class="btn btn-default pull-right" (click)="updateSentence(item.$key)">Set</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+
+<modal #modal>
+    <modal-header [show-close]="true">
+        <h4 class="modal-title">Share a Sauro!</h4>
+    </modal-header>
+    <modal-body>
+        <a href="{{sendUrl}}">{{sendUrl}}</a>
+    </modal-body>
+    <modal-footer [show-default-buttons]="true"></modal-footer>
+</modal>

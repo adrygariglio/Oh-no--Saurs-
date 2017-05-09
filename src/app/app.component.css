@@ -6,7 +6,7 @@
     position: absolute;
     height: 65%;
     text-align: center;
-    width: 135%;
+    width: 90%;
 }
 .text-box:before {
    content: '';
@@ -15,8 +15,12 @@
    vertical-align: middle;
 }
 p {
+   font-family: 'ilieticamedium';
    display: inline-block;
-   max-width: 200px;
+   max-width: 250px;
+   font-size: 200%;
+   line-height: 1;
+   color: #3d475a;
 }
 img {
   display: block;
@@ -24,6 +28,11 @@ img {
   height: auto;
 }
 
-textarea {
-  width: 100%;
+@font-face {
+    font-family: 'ilieticamedium';
+    src: url('../assets/ilietica-webfont.woff2') format('woff2'),
+         url('../assets/ilietica-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
 }

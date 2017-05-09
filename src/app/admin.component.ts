@@ -3,11 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 
 @Component({
-  selector: 'thesauros',
-  templateUrl: './sauros.component.html',
+  selector: 'admin',
+  templateUrl: './admin.component.html',
   styleUrls: ['./app.component.css']
 })
-export class SaurosComponent implements OnInit {
+export class AdminComponent implements OnInit {
   private dinosaursays: FirebaseObjectObservable<any[]>;
   private newdinosaursays: string;
   private ultimodinosaurssays: FirebaseListObservable<any[]>;
@@ -18,28 +18,23 @@ export class SaurosComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private db: AngularFireDatabase) {}
 
-  previewItem(preview: string) {
-    this.newdinosaursays = preview;
+  shareUrl(share) {
+      this.sendUrl = this.appUrl + share;
+      console.log(this.sendUrl)
   }
 
-  cleanItem(preview: string) {
-    this.newdinosaursays = '';
-    this.dinosaursays = undefined;
+  updateSentence(updatesentence) {
+      this.dinosaursays = this.db.object('items' + '/' + updatesentence);
+      this.sendUrl = this.appUrl + updatesentence;
+      console.log(this.sendUrl);
   }
 
-  addAndShareItem(newSentence: string) {
-    this.items.push({ text: newSentence });
-    // leggimi l'ultimo record
-    this.ultimodinosaurssays = this.db.list('items', {
-      query: {
-      orderByChild: 'text',
-      equalTo: newSentence,
-      limitToFirst: 1
-      }
-    });
+  deleteItem(key: string) {
+    this.items.remove(key);
   }
 
   ngOnInit() {
+    // this.dinosaursays = 'megaciaone';
     this.dinosaursid = this.route.snapshot.params['id'];
     this.dinosaursays = this.db.object('items' + '/' + this.dinosaursid);
     this.items = this.db.list('/items');
