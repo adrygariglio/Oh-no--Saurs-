@@ -17,8 +17,30 @@
         <div class="form-group">
           <input type="text" class="form-control" #newsentence placeholder="Saurs thinking about...">
         </div>
+        <div class="form-group">
+          <div class="dropdown">
+            <a href="#" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-font" aria-hidden="true"></span> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li style="font-family:'ilieticamedium';" class="ilieticamedium" value="ilieticamedium" (click)="fontfamily = 'ilieticamedium'"><a href="#">Ilietica</a></li>
+              <li style="font-family:'pt_cicerimedium';" class="pt_cicerimedium" value="pt_cicerimedium" (click)="fontfamily = 'pt_cicerimedium'"><a href="#">PT Ciceri</a></li>
+              <li role="separator" class="divider"></li>
+              <li (click)="fontfamily = ''"><a href="#">Boring</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="dropdown">
+            <a href="#" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Volume of the roar <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li (click)="size = 15"><a href="#">Gossiping</a></li>
+              <li (click)="size = 30"><a href="#">Boss in the office</a></li>
+              <li (click)="size = 50"><a href="#">Regular roar</a></li>
+              <li (click)="size = 60"><a href="#">Talk above headphones</a></li>
+              <li (click)="size = 80"><a href="#">Napolitan Saurs</a></li>
+            </ul>
+          </div>
+        </div>
         <button class="btn btn-default" (click)="previewItem(newsentence.value)">Preview</button>
-        <button class="btn btn-danger" (click)="cleanItem()">Clean</button>
         <button type="button" class="btn btn-success" (click)="addAndShareItem(newsentence.value)">Share</button>
       </form>
       <ul class="nav navbar-nav navbar-left" *ngFor="let dino of ultimodinosaurssays | async">
@@ -29,7 +51,7 @@
 </nav>
 <div class="containerBox">
     <div class="text-box">
-        <p>{{newdinosaursays}}{{ (dinosaursays | async)?.text }}</p>
+        <p [ngStyle]="{'font-family': fontfamily, 'font-size': size + 'px'}">{{newdinosaursays}}{{ (dinosaursays | async)?.text }}</p>
     </div>
     <img class="img-responsive" src="../assets/dinos2.png"/>
 </div>

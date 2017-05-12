@@ -15,8 +15,13 @@ export class SaurosComponent implements OnInit {
   private items: FirebaseListObservable<any[]>;
   private sendUrl: string;
   private dinosaursid: string;
+  size: number;
+  fontfamily: string;
 
-  constructor(private route: ActivatedRoute, private db: AngularFireDatabase) {}
+  constructor(private route: ActivatedRoute, private db: AngularFireDatabase) {
+    this.size = 50;
+    this.fontfamily = '';
+  }
 
   previewItem(preview: string) {
     this.newdinosaursays = preview;
@@ -28,7 +33,7 @@ export class SaurosComponent implements OnInit {
   }
 
   addAndShareItem(newSentence: string) {
-    this.items.push({ text: newSentence });
+    this.items.push({ text: newSentence, fontsize: this.size, fontfamily: this.fontfamily });
     // leggimi l'ultimo record
     this.ultimodinosaurssays = this.db.list('items', {
       query: {

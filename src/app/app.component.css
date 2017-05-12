@@ -15,7 +15,7 @@
    vertical-align: middle;
 }
 p {
-   font-family: 'ilieticamedium';
+   font-family: 'Verdana';
    display: inline-block;
    max-width: 250px;
    font-size: 200%;
@@ -32,6 +32,15 @@ img {
     font-family: 'ilieticamedium';
     src: url('../assets/ilietica-webfont.woff2') format('woff2'),
          url('../assets/ilietica-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'pt_cicerimedium';
+    src: url('../assets/pt_ciceri-webfont.woff2') format('woff2'),
+         url('../assets/pt_ciceri-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 

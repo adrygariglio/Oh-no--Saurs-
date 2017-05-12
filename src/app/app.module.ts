@@ -8,6 +8,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { AppComponent } from './app.component';
 import { SaurosComponent } from './sauros.component';
+import { ViewSaurosComponent } from './viewsauros.component';
 import { AdminComponent } from './admin.component';
 import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
 
@@ -27,6 +28,7 @@ export const environment = {
   declarations: [
     AppComponent,
     SaurosComponent,
+    ViewSaurosComponent,
     AdminComponent
   ],
   imports: [
@@ -44,7 +46,7 @@ export const environment = {
       },
       {
         path: ':id',
-        component: SaurosComponent,
+        component: ViewSaurosComponent,
       },
       {
         path: 'admin/ad',
