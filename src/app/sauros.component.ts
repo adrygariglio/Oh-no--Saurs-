@@ -11,7 +11,8 @@ export class SaurosComponent implements OnInit {
   private dinosaursays: FirebaseObjectObservable<any[]>;
   private newdinosaursays: string;
   private ultimodinosaurssays: FirebaseListObservable<any[]>;
-  private appUrl = "http://ohnosaurs.altervista.org/";
+  private appUrl = "http://localhost:4200/";
+  // private appUrl = "http://ohnosaurs.altervista.org/";
   private items: FirebaseListObservable<any[]>;
   private sendUrl: string;
   private dinosaursid: string;

@@ -38,9 +38,36 @@ img {
 }
 
 @font-face {
-    font-family: 'pt_cicerimedium';
-    src: url('../assets/pt_ciceri-webfont.woff2') format('woff2'),
-         url('../assets/pt_ciceri-webfont.woff') format('woff');
+    font-family: 'comic_sacchmedium';
+    src: url('../assets/comic_sacch-webfont.woff2') format('woff2'),
+         url('../assets/comic_sacch-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'mariett';
+    src: url('../assets/mariett-webfont.woff2') format('woff2'),
+         url('../assets/mariett-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'moskifymedium';
+    src: url('../assets/moskify-webfont.woff2') format('woff2'),
+         url('../assets/moskify-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'myscriptfontmedium';
+    src: url('../assets/pr_ciceri_bold-webfont.woff2') format('woff2'),
+         url('../assets/pr_ciceri_bold-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
