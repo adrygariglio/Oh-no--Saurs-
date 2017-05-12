@@ -21,7 +21,7 @@
 </nav>
 <div class="containerBox">
     <div class="text-box">
-        <p style="font-size: 10px">{{ (dinosaursays | async)?.text }}{{ (dinosaursays | async)?.fontsize }}</p>
+        <p [ngStyle]="{'font-family': (dinosaursays | async)?.fontfamily, 'font-size': (dinosaursays | async)?.fontsize + 'px'}">{{ (dinosaursays | async)?.text }}</p>
     </div>
     <img class="img-responsive" src="../assets/dinos2.png"/>
 </div>
