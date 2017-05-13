@@ -14,11 +14,40 @@
    height: 100%;
    vertical-align: middle;
 }
+
+
+@media all and (max-width: 3000px) { /* screen size until 1200px */
+    p {
+        font-size: 2.5em; /* 1.5x default size */
+        display: inline-block;
+        max-width: 250px;
+        line-height: 1;
+        color: #3d475a;
+    }
+}
+@media all and (max-width: 1000px) { /* screen size until 1000px */
+    p {
+        font-size: 1.8em; /* 1.2x default size */
+        display: inline-block;
+        max-width: 250px;
+        line-height: 1;
+        color: #3d475a;
+        }
+    }
+@media all and (max-width: 500px) { /* screen size until 500px */
+    p {
+        font-size: 1em; /* 0.8x default size */
+        display: inline-block;
+        max-width: 250px;
+        line-height: 1;
+        color: #3d475a;
+        }
+    }
+
 p {
    font-family: 'Verdana';
    display: inline-block;
    max-width: 250px;
-   font-size: 200%;
    line-height: 1;
    color: #3d475a;
 }

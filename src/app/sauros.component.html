@@ -15,7 +15,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <form class="navbar-form navbar-left">
         <div class="form-group">
-          <input type="text" class="form-control" #newsentence placeholder="Saurs thinking about...">
+          <input type="text" class="form-control" #newsentence placeholder="Saurs thinking about..." />
         </div>
         <div class="form-group">
           <div class="dropdown">
@@ -26,25 +26,25 @@
               <li style="font-family:'mariett';" class="mariett" value="mariett" (click)="fontfamily = 'mariett'"><a href="#">Mariett</a></li>
               <li style="font-family:'moskifymedium';" class="moskifymedium" value="moskifymedium" (click)="fontfamily = 'moskifymedium'"><a href="#">Moskify</a></li>
               <li style="font-family:'myscriptfontmedium';" class="myscriptfontmedium" value="myscriptfontmedium" (click)="fontfamily = 'myscriptfontmedium'"><a href="#">PT Ciceri</a></li>
-              <li role="separator" class="divider"></li>
-              <li (click)="fontfamily = ''"><a href="#">Boring</a></li>
             </ul>
           </div>
         </div>
+        <!--
         <div class="form-group">
           <div class="dropdown">
             <a href="#" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Volume of the roar <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li (click)="size = 15"><a href="#">Gossiping</a></li>
-              <li (click)="size = 30"><a href="#">Boss in the office</a></li>
-              <li (click)="size = 50"><a href="#">Regular roar</a></li>
-              <li (click)="size = 60"><a href="#">Talk above headphones</a></li>
-              <li (click)="size = 80"><a href="#">Napolitan Saurs</a></li>
+              <li (click)="size = 1"><a href="#">Gossiping</a></li>
+              <li (click)="size = 1.5"><a href="#">Boss in the office</a></li>
+              <li (click)="size = 2.5"><a href="#">Regular roar</a></li>
+              <li (click)="size = 3.5"><a href="#">Talk above headphones</a></li>
+              <li (click)="size = 5"><a href="#">Napolitan Saurs</a></li>
             </ul>
           </div>
         </div>
-        <button class="btn btn-default" (click)="previewItem(newsentence.value)">Preview</button>
-        <button type="button" class="btn btn-success" (click)="addAndShareItem(newsentence.value)">Share</button>
+      -->
+        <button class="btn btn-success" (click)="previewItem(newsentence.value)">Preview</button>
+        <button type="button" class="btn btn-warning" (click)="addAndShareItem(newsentence.value)">Share</button>
       </form>
       <ul class="nav navbar-nav navbar-left" *ngFor="let dino of ultimodinosaurssays | async">
         <li><a href="{{appUrl}}{{dino.$key}}">{{appUrl}}{{dino.$key}}</a></li>
@@ -54,7 +54,7 @@
 </nav>
 <div class="containerBox">
     <div class="text-box">
-        <p [ngStyle]="{'font-family': fontfamily, 'font-size': size + 'px'}">{{newdinosaursays}}{{ (dinosaursays | async)?.text }}</p>
+        <p [ngStyle]="{'font-family': fontfamily, 'font-size': size + 'em'}">{{newdinosaursays}}</p>
     </div>
     <img class="img-responsive" src="../assets/dinos2.png"/>
 </div>

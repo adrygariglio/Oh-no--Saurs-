@@ -9,10 +9,11 @@ import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable }
 })
 export class SaurosComponent implements OnInit {
   private dinosaursays: FirebaseObjectObservable<any[]>;
-  private newdinosaursays: string;
+  private newdinosaursays = "30 are the new 20";
   private ultimodinosaurssays: FirebaseListObservable<any[]>;
-  private appUrl = "http://localhost:4200/";
-  // private appUrl = "http://ohnosaurs.altervista.org/";
+  // private appUrl = "http://localhost:4200/";
+  // private appUrl = "https://oh-no-saurs.firebaseapp.com/";
+  private appUrl = "http://ohnosaurs.altervista.org/";
   private items: FirebaseListObservable<any[]>;
   private sendUrl: string;
   private dinosaursid: string;
@@ -20,21 +21,16 @@ export class SaurosComponent implements OnInit {
   fontfamily: string;
 
   constructor(private route: ActivatedRoute, private db: AngularFireDatabase) {
-    this.size = 50;
-    this.fontfamily = '';
+    // this.size = 2.5;
+    this.fontfamily = 'myscriptfontmedium';
   }
 
   previewItem(preview: string) {
     this.newdinosaursays = preview;
   }
 
-  cleanItem(preview: string) {
-    this.newdinosaursays = '';
-    this.dinosaursays = undefined;
-  }
-
   addAndShareItem(newSentence: string) {
-    this.items.push({ text: newSentence, fontsize: this.size, fontfamily: this.fontfamily });
+    this.items.push({ text: newSentence, fontfamily: this.fontfamily });
     // leggimi l'ultimo record
     this.ultimodinosaurssays = this.db.list('items', {
       query: {
