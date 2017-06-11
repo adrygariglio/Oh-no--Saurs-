@@ -8,20 +8,41 @@ import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable }
   styleUrls: ['./app.component.css']
 })
 export class ViewSaurosComponent implements OnInit {
-  private dinosaursays: FirebaseObjectObservable<any[]>;
-  private sendUrl: string;
+  private dinosaursays: any[];
   private dinosaursid: string;
-  private style = {
-      size: 10,
-      font: "ilieticamedium"
-  };
+  private previousMessagesId: string;
+  private previousMessages: any[];
 
   constructor(private route: ActivatedRoute, private db: AngularFireDatabase) {}
 
 
   ngOnInit() {
     this.dinosaursid = this.route.snapshot.params['id'];
-    this.dinosaursays = this.db.object('items' + '/' + this.dinosaursid);
+    // this.dinosaursays = this.db.object('items' + '/' + this.dinosaursid);
+    return this.db.object('items/' + this.dinosaursid)
+        .subscribe((all) => {
+          this.dinosaursays = all;
+          this.getPreviousMessagesId();
+          this.getPreviousMessages();
+          console.log('Nuovo messaggio id: ' + this.dinosaursid);
+          // console.log(this.dinosaursays);
+        });
+  }
+
+  getPreviousMessagesId() {
+    return this.db.object('items/' + this.dinosaursid + '/replyid')
+        .subscribe((all) => {
+          this.previousMessagesId = all.$value;
+          console.log(this.previousMessagesId);
+        });
+  }
+
+  getPreviousMessages() {
+    return this.db.object('items/' + this.previousMessagesId)
+        .subscribe((all) => {
+          this.previousMessages = all;
+          console.log(this.previousMessages);
+        });
   }
 
 }

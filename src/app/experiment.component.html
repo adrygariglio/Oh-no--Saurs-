@@ -1,4 +1,4 @@
-<button class="btn btn-default">Test GET Request</button>
-<h4>Output: {{getData}}</h4>
-<button  class="btn btn-default">Test POST Request</button>
-<h4>Output: {{postData}}</h4>
+<ul *ngFor="let message of allMessages">
+  <li>{{message.text}}</li>
+</ul>
+<h4>{{theMessage?.text}}</h4>

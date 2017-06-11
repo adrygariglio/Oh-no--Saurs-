@@ -3,12 +3,15 @@ import { ActivatedRoute } from '@angular/router';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 
 @Component({
-  selector: 'thesauros',
-  templateUrl: './sauros.component.html',
+  selector: 'replysauros',
+  templateUrl: './replysaurs.component.html',
   styleUrls: ['./app.component.css']
 })
-export class SaurosComponent implements OnInit {
-  private newdinosaursays = "30 are the new 20";
+export class ReplySaurosComponent implements OnInit {
+  private dinosaursid: string;
+  olddinosaursay: any[];
+  replyid: string;
+  private newdinosaursays = "";
   private ultimodinosaurssays: FirebaseListObservable<any[]>;
   private appUrl = "http://localhost:4200/";
   // private appUrl = "http://ohnosaurs.altervista.org/";
@@ -27,7 +30,7 @@ export class SaurosComponent implements OnInit {
 
   addAndShareItem(newSentence: string) {
     // this.items.push({ text: newSentence, fontfamily: this.fontfamily });
-    this.db.list('items').push({ text: newSentence, fontfamily: this.fontfamily });
+    this.db.list('items').push({ text: newSentence, fontfamily: this.fontfamily, replyid: this.replyid});
     // leggimi l'ultimo record
     this.ultimodinosaurssays = this.db.list('items', {
       query: {
@@ -39,7 +42,14 @@ export class SaurosComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.dinosaursid = this.route.snapshot.params['id'];
+    this.replyid = this.dinosaursid;
     this.items = this.db.list('/items');
+    return this.db.object('items/' + this.dinosaursid)
+        .subscribe((all) => {
+          this.olddinosaursay = all;
+          console.log(this.replyid);
+        });
   }
 
 }

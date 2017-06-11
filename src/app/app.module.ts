@@ -9,6 +9,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AppComponent } from './app.component';
 import { SaurosComponent } from './sauros.component';
 import { ViewSaurosComponent } from './viewsauros.component';
+import { ReplySaurosComponent } from './replysaurs.component';
+
 import { AdminComponent } from './admin.component';
 import { ExperimentComponent } from './experiment.component';
 import { DataService } from './experiment.service';
@@ -31,6 +33,7 @@ export const environment = {
     AppComponent,
     SaurosComponent,
     ViewSaurosComponent,
+    ReplySaurosComponent,
     AdminComponent,
     ExperimentComponent
   ],
@@ -52,7 +55,11 @@ export const environment = {
         component: ViewSaurosComponent,
       },
       {
-        path: 'admin/lab',
+        path: 'reply/:id',
+        component: ReplySaurosComponent,
+      },
+      {
+        path: 'admin/ad',
         component: AdminComponent,
       },
       {

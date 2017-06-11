@@ -10,17 +10,30 @@ import { DataService } from './experiment.service';
 })
 
 export class ExperimentComponent implements OnInit {
-  allSaurs: any[];
-  personasid;
+  allMessages: any[];
+  theMessage: any[];
+  idMessage: string;
 
   constructor(private route: ActivatedRoute, private af: AngularFireDatabase, private heroService: DataService) {}
 
   ngOnInit() {
-    this.af.object('items/')
+    this.idMessage = this.route.snapshot.params['id'];
+    return this.af.list('messages/')
         .subscribe((all) => {
-          this.allSaurs = all;
+          this.allMessages = all;
+          this.showTheMessage();
+          console.log(this.idMessage)
+          console.log(this.allMessages)
+          console.log(this.theMessage)
         });
-    console.log(this.allSaurs);
   }
+
+  showTheMessage() {
+    return this.af.object('messages/' + this.idMessage)
+        .subscribe((all) => {
+          this.theMessage = all;
+        });
+  }
+
 
 }
