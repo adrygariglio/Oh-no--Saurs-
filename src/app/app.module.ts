@@ -10,6 +10,8 @@ import { AppComponent } from './app.component';
 import { SaurosComponent } from './sauros.component';
 import { ViewSaurosComponent } from './viewsauros.component';
 import { AdminComponent } from './admin.component';
+import { ExperimentComponent } from './experiment.component';
+import { DataService } from './experiment.service';
 import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
 
 export const environment = {
@@ -29,7 +31,8 @@ export const environment = {
     AppComponent,
     SaurosComponent,
     ViewSaurosComponent,
-    AdminComponent
+    AdminComponent,
+    ExperimentComponent
   ],
   imports: [
     BrowserModule,
@@ -49,12 +52,16 @@ export const environment = {
         component: ViewSaurosComponent,
       },
       {
-        path: 'admin/ad',
+        path: 'admin/lab',
         component: AdminComponent,
+      },
+      {
+        path: 'lab/lab',
+        component: ExperimentComponent,
       }
     ])
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
