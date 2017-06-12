@@ -18,30 +18,34 @@ export class ViewSaurosComponent implements OnInit {
 
   ngOnInit() {
     this.dinosaursid = this.route.snapshot.params['id'];
+    this.getPreviousMessagesId();
     // this.dinosaursays = this.db.object('items' + '/' + this.dinosaursid);
-    return this.db.object('items/' + this.dinosaursid)
+    this.db.object('items/' + this.dinosaursid)
         .subscribe((all) => {
           this.dinosaursays = all;
-          this.getPreviousMessagesId();
-          this.getPreviousMessages();
-          console.log('Nuovo messaggio id: ' + this.dinosaursid);
+          console.log('Nuovo messaggio id: ', this.dinosaursid);
           // console.log(this.dinosaursays);
         });
   }
 
   getPreviousMessagesId() {
-    return this.db.object('items/' + this.dinosaursid + '/replyid')
+    if (this.dinosaursid!=null) {
+      this.db.object('items/' + this.dinosaursid + '/replyid')
         .subscribe((all) => {
           this.previousMessagesId = all.$value;
-          console.log(this.previousMessagesId);
+          if (this.previousMessagesId!=null) {
+            this.getPreviousMessages(this.previousMessagesId);
+            console.log("Precedente id: ", this.previousMessagesId);
+          }
         });
+    }
   }
 
-  getPreviousMessages() {
-    return this.db.object('items/' + this.previousMessagesId)
+  getPreviousMessages(id: string) {
+    return this.db.object('items/' + id)
         .subscribe((all) => {
           this.previousMessages = all;
-          console.log(this.previousMessages);
+          console.log("Messaggio precedente", this.previousMessages);
         });
   }
 

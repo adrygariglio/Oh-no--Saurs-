@@ -20,6 +20,9 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+<div *ngIf='previousMessages' class="alert alert-success col-xs-12 col-md-6 col-md-offset-3" role="alert">
+  <h5 class="text-center">Previous messages:<br/><h3>{{previousMessages?.text}}</h3></h5>
+</div>
 <div class="containerBox">
     <div class="text-box">
         <p [ngStyle]="{'font-family': dinosaursays?.fontfamily, 'font-size': dinosaursays?.fontsize + 'em'}">{{ dinosaursays?.text }}</p>
