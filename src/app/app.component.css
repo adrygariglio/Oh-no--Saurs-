@@ -4,11 +4,24 @@
 }
 .text-box {
     position: absolute;
-    height: 65%;
+    height: 48%;
     text-align: center;
     width: 90%;
 }
 .text-box:before {
+   content: '';
+   display: inline-block;
+   height: 100%;
+   vertical-align: middle;
+}
+
+.text-box-reply-pari {
+    position: absolute;
+    height: 95%;
+    text-align: center;
+    width: 115%;
+}
+.text-box-reply-pari:before {
    content: '';
    display: inline-block;
    height: 100%;

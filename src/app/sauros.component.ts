@@ -8,7 +8,7 @@ import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable }
   styleUrls: ['./app.component.css']
 })
 export class SaurosComponent implements OnInit {
-  private newdinosaursays = "30 are the new 20";
+  private newdinosaursays: string;
   private ultimodinosaurssays: FirebaseListObservable<any[]>;
   private appUrl = "http://localhost:4200/";
   // private appUrl = "http://ohnosaurs.altervista.org/";
@@ -16,14 +16,7 @@ export class SaurosComponent implements OnInit {
   size: number;
   fontfamily: string;
 
-  constructor(private route: ActivatedRoute, private db: AngularFireDatabase) {
-    // this.size = 2.5;
-    this.fontfamily = 'myscriptfontmedium';
-  }
-
-  previewItem(preview: string) {
-    this.newdinosaursays = preview;
-  }
+  constructor(private route: ActivatedRoute, private db: AngularFireDatabase) {}
 
   addAndShareItem(newSentence: string) {
     // this.items.push({ text: newSentence, fontfamily: this.fontfamily });
@@ -40,6 +33,7 @@ export class SaurosComponent implements OnInit {
 
   ngOnInit() {
     this.items = this.db.list('/items');
+    this.fontfamily = 'myscriptfontmedium';
   }
 
 }

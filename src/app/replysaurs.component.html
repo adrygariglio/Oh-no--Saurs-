@@ -15,7 +15,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <form class="navbar-form navbar-left">
         <div class="form-group">
-          <input type="text" class="form-control" #newsentence placeholder="Saurs thinking about..." />
+          <input (keyup)="0" type="text" class="form-control" #newsentence placeholder="Saurs thinking about..." />
         </div>
         <div class="form-group">
           <div class="dropdown">
@@ -43,7 +43,6 @@
           </div>
         </div>
       -->
-        <button class="btn btn-success" (click)="previewItem(newsentence.value)">Preview</button>
         <button type="button" class="btn btn-warning" (click)="addAndShareItem(newsentence.value)">Reply</button>
       </form>
       <ul class="nav navbar-nav navbar-left" *ngFor="let dino of ultimodinosaurssays | async">
@@ -52,12 +51,20 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+<!--
 <div class="alert alert-success col-xs-12 col-md-6 col-md-offset-3" role="alert">
   <h5 class="text-center">Reply to:<br/><h3>{{olddinosaursay?.text}}</h3></h5>
 </div>
+-->
+<div class="containerBox">
+  <div class="text-box-reply-pari">
+      <p [ngStyle]="{'font-family': fontfamily, 'font-size': size + 'em'}">{{olddinosaursay?.text}}</p>
+  </div>
+  <img class="img-responsive" src="../assets/dinos_reply_pari.png"/>
+</div>
 <div class="containerBox">
     <div class="text-box">
-        <p [ngStyle]="{'font-family': fontfamily, 'font-size': size + 'em'}">{{newdinosaursays}}</p>
+        <p [ngStyle]="{'font-family': fontfamily, 'font-size': size + 'em'}">{{newsentence.value}}</p>
     </div>
-    <img class="img-responsive" src="../assets/dinos2.png"/>
+    <img class="img-responsive" src="../assets/dinos_inizio.png"/>
 </div>
