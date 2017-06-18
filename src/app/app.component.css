@@ -1,3 +1,13 @@
+.containerMega {
+    position: absolute;
+    bottom: 25px;
+}
+
+.reacting {
+    position: relative;
+    display: inline-block;
+}
+
 .containerBox {
     position: relative;
     display: inline-block;
