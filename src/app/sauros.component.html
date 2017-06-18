@@ -1,59 +1,28 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" routerLink="/">Oh no! <strong>Saurs!</strong></a>
-    </div>
+<div class="containerMega">
+  <div class="containerBox">
+      <div class="text-box">
+          <p [ngStyle]="{'font-family': fontfamily, 'font-size': size + 'em'}">{{newsentence.value}}</p>
+      </div>
+      <img class="img-responsive" src="../assets/dinos_inizio.png"/>
+  </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <form class="navbar-form navbar-left">
-        <div class="form-group">
-          <input (keyup)="0" type="text" class="form-control" #newsentence placeholder="Saurs thinking about..." />
-        </div>
-        <div class="form-group">
-          <div class="dropdown">
-            <a class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-font" aria-hidden="true"></span> <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li style="font-family:'comic_sacchmedium';" class="comic_sacchmedium" value="comic_sacchmedium" (click)="fontfamily = 'comic_sacchmedium'"><a>Comic Sacch</a></li>
-              <li style="font-family:'ilieticamedium';" class="ilieticamedium" value="ilieticamedium" (click)="fontfamily = 'ilieticamedium'"><a>Ilietica</a></li>
-              <li style="font-family:'mariett';" class="mariett" value="mariett" (click)="fontfamily = 'mariett'"><a>Mariett</a></li>
-              <li style="font-family:'moskifymedium';" class="moskifymedium" value="moskifymedium" (click)="fontfamily = 'moskifymedium'"><a>Moskify</a></li>
-              <li style="font-family:'myscriptfontmedium';" class="myscriptfontmedium" value="myscriptfontmedium" (click)="fontfamily = 'myscriptfontmedium'"><a>PT Ciceri</a></li>
-            </ul>
-          </div>
-        </div>
-        <!--
-        <div class="form-group">
-          <div class="dropdown">
-            <a href="#" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Volume of the roar <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li (click)="size = 1"><a href="#">Gossiping</a></li>
-              <li (click)="size = 1.5"><a href="#">Boss in the office</a></li>
-              <li (click)="size = 2.5"><a href="#">Regular roar</a></li>
-              <li (click)="size = 3.5"><a href="#">Talk above headphones</a></li>
-              <li (click)="size = 5"><a href="#">Napolitan Saurs</a></li>
-            </ul>
-          </div>
-        </div>
-      -->
-        <button type="button" class="btn btn-warning" (click)="addAndShareItem(newsentence.value)">Share</button>
-      </form>
-      <ul class="nav navbar-nav navbar-left" *ngFor="let dino of ultimodinosaurssays | async">
-        <li><a href="{{appUrl}}{{dino.$key}}">{{appUrl}}{{dino.$key}}</a></li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-<div class="containerBox">
-    <div class="text-box">
-        <p [ngStyle]="{'font-family': fontfamily, 'font-size': size + 'em'}">{{newsentence.value}}</p>
-    </div>
-    <img class="img-responsive" src="../assets/dinos_inizio.png"/>
+  <div class="reacting col-sm-4 col-sm-offset-4">
+    <div class="input-group">
+      <input (keyup)="0" type="text" class="form-control" #newsentence placeholder="Saurs thinking about..." />
+      <div class="input-group-btn">
+        <button type="button" class="btn btn-default" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-font" aria-hidden="true"></span><span class="caret"></span></button>
+        <ul class="dropdown-menu dropdown-menu-right">
+          <li style="font-family:'comic_sacchmedium';" class="comic_sacchmedium" value="comic_sacchmedium" (click)="fontfamily = 'comic_sacchmedium'"><a>Comic Sacch</a></li>
+          <li style="font-family:'ilieticamedium';" class="ilieticamedium" value="ilieticamedium" (click)="fontfamily = 'ilieticamedium'"><a>Ilietica</a></li>
+          <li style="font-family:'mariett';" class="mariett" value="mariett" (click)="fontfamily = 'mariett'"><a>Mariett</a></li>
+          <li style="font-family:'moskifymedium';" class="moskifymedium" value="moskifymedium" (click)="fontfamily = 'moskifymedium'"><a>Moskify</a></li>
+          <li style="font-family:'myscriptfontmedium';" class="myscriptfontmedium" value="myscriptfontmedium" (click)="fontfamily = 'myscriptfontmedium'"><a>PT Ciceri</a></li>
+        </ul>
+        <button type="button" class="btn btn-success" (click)="addAndShareItem(newsentence.value)">Share</button>
+      </div><!-- /btn-group -->
+    </div><!-- /input-group -->
+    <ul class="nav" *ngFor="let dino of ultimodinosaurssays | async">
+      <div class="alert alert-success text-center" role="alert"><li><a href="{{appUrl}}{{dino.$key}}">{{appUrl}}{{dino.$key}}</a></li></div>
+    </ul>
+  </div><!-- /.col-sm-4 -->
 </div>
