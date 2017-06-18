@@ -11,7 +11,6 @@ export class ReplySaurosComponent implements OnInit {
   private dinosaursid: string;
   olddinosaursay: any[];
   replyid: string;
-  private newdinosaursays = "";
   private ultimodinosaurssays: FirebaseListObservable<any[]>;
   private appUrl = "http://localhost:4200/";
   // private appUrl = "http://ohnosaurs.altervista.org/";
@@ -19,14 +18,7 @@ export class ReplySaurosComponent implements OnInit {
   size: number;
   fontfamily: string;
 
-  constructor(private route: ActivatedRoute, private db: AngularFireDatabase) {
-    // this.size = 2.5;
-    this.fontfamily = 'myscriptfontmedium';
-  }
-
-  previewItem(preview: string) {
-    this.newdinosaursays = preview;
-  }
+  constructor(private route: ActivatedRoute, private db: AngularFireDatabase) {}
 
   addAndShareItem(newSentence: string) {
     // this.items.push({ text: newSentence, fontfamily: this.fontfamily });
@@ -44,6 +36,7 @@ export class ReplySaurosComponent implements OnInit {
   ngOnInit() {
     this.dinosaursid = this.route.snapshot.params['id'];
     this.replyid = this.dinosaursid;
+    this.fontfamily = 'myscriptfontmedium';
     this.items = this.db.list('/items');
     return this.db.object('items/' + this.dinosaursid)
         .subscribe((all) => {

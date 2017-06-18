@@ -27,7 +27,7 @@
 -->
 <div class="containerBox">
   <div  *ngIf='previousMessages' class="text-box-reply-pari">
-      <p [ngStyle]="{'font-family': dinosaursays?.fontfamily, 'font-size': dinosaursays?.fontsize + 'em'}">{{previousMessages?.text}}</p>
+      <p [ngStyle]="{'font-family': previousMessages?.fontfamily, 'font-size': previousMessages?.fontsize + 'em'}">{{previousMessages?.text}}</p>
   </div>
   <img  *ngIf='previousMessages' class="img-responsive" src="../assets/dinos_reply_pari.png"/>
 </div>

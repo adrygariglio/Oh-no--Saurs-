@@ -23,8 +23,6 @@
             <td>{{item.text}}</td>
             <td>
               <button class="btn btn-danger pull-right" (click)="deleteItem(item.$key)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
-              <button type="button" class="btn btn-success pull-right" (click)="modal.open(item.$key)">Share</button>
-              <button class="btn btn-default pull-right" (click)="updateSentence(item.$key)">Set</button>
             </td>
           </tr>
         </tbody>
@@ -33,13 +31,3 @@
   </div>
 </div>
 </div>
-
-<modal #modal>
-    <modal-header [show-close]="true">
-        <h4 class="modal-title">Share a Sauro!</h4>
-    </modal-header>
-    <modal-body>
-        <a href="{{sendUrl}}">{{sendUrl}}</a>
-    </modal-body>
-    <modal-footer [show-default-buttons]="true"></modal-footer>
-</modal>

@@ -14,7 +14,6 @@ import { ReplySaurosComponent } from './replysaurs.component';
 import { AdminComponent } from './admin.component';
 import { ExperimentComponent } from './experiment.component';
 import { DataService } from './experiment.service';
-import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
 
 export const environment = {
   production: false,
@@ -41,7 +40,6 @@ export const environment = {
     BrowserModule,
     FormsModule,
     HttpModule,
-    Ng2Bs3ModalModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     RouterModule.forRoot([
