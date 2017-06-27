@@ -5,7 +5,9 @@
       </div>
       <img class="img-responsive" src="../assets/dinos_inizio.png"/>
   </div>
-
+  <ul class="nav" *ngFor="let dino of ultimodinosaurssays | async">
+    <div class="alert alert-success text-center" role="alert"><li><a href="{{appUrl}}{{dino.$key}}">{{appUrl}}{{dino.$key}}</a></li></div>
+  </ul>
   <div class="reacting col-sm-4 col-sm-offset-4">
     <div class="input-group">
       <input (keyup)="0" type="text" class="form-control" #newsentence placeholder="Saurs thinking about..." />
@@ -21,8 +23,5 @@
         <button type="button" class="btn btn-success" (click)="addAndShareItem(newsentence.value)">Share</button>
       </div><!-- /btn-group -->
     </div><!-- /input-group -->
-    <ul class="nav" *ngFor="let dino of ultimodinosaurssays | async">
-      <div class="alert alert-success text-center" role="alert"><li><a href="{{appUrl}}{{dino.$key}}">{{appUrl}}{{dino.$key}}</a></li></div>
-    </ul>
   </div><!-- /.col-sm-4 -->
 </div>
