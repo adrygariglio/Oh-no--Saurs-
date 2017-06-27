@@ -11,41 +11,45 @@ export class ViewSaurosComponent implements OnInit {
   private dinosaursays: any[];
   private dinosaursid: string;
   private previousMessagesId: string;
-  private previousMessages: any[];
+  private previousMessages: any[] = [];
+  // private lastdinosaursid: string;
 
   constructor(private route: ActivatedRoute, private db: AngularFireDatabase) {}
 
 
   ngOnInit() {
     this.dinosaursid = this.route.snapshot.params['id'];
-    this.getPreviousMessagesId();
-    // this.dinosaursays = this.db.object('items' + '/' + this.dinosaursid);
+    // this.lastdinosaursid = this.dinosaursid;
     this.db.object('items/' + this.dinosaursid)
         .subscribe((all) => {
           this.dinosaursays = all;
           console.log('Nuovo messaggio id: ', this.dinosaursid);
-          // console.log(this.dinosaursays);
+          this.getPreviousMessageOf(this.dinosaursid);
         });
   }
 
-  getPreviousMessagesId() {
-    if (this.dinosaursid!=null) {
-      this.db.object('items/' + this.dinosaursid + '/replyid')
+  getPreviousMessageOf(dinosaursid) {
+    console.log("Look for previous messages for id: ", dinosaursid);
+    this.db.object('items/' + dinosaursid + '/replyid')
+      .subscribe((all) => {
+        let previousMessagesId = all.$value;
+        if (previousMessagesId!=null) {
+          this.loadMessage(previousMessagesId);
+        } else {
+          console.log("No previous message");
+        }
+      });
+  }
+
+  loadMessage(dinosaursid) {
+    console.log("Load message for id: ", dinosaursid);
+    this.db.object('items/' + dinosaursid)
         .subscribe((all) => {
-          this.previousMessagesId = all.$value;
-          if (this.previousMessagesId!=null) {
-            this.getPreviousMessages(this.previousMessagesId);
-            console.log("Precedente id: ", this.previousMessagesId);
+          console.log("Loaded message:", all);
+          if (all!=null) {
+            this.previousMessages.unshift(all);
+            this.getPreviousMessageOf(dinosaursid);
           }
-        });
-    }
-  }
-
-  getPreviousMessages(id: string) {
-    return this.db.object('items/' + id)
-        .subscribe((all) => {
-          this.previousMessages = all;
-          console.log("Messaggio precedente", this.previousMessages);
         });
   }
 

@@ -1,9 +1,9 @@
-<div class="containerMega">
-  <div class="containerBox">
-    <div  *ngIf='previousMessages' class="text-box-reply-pari">
-        <p [ngStyle]="{'font-family': previousMessages?.fontfamily, 'font-size': previousMessages?.fontsize + 'em'}">{{previousMessages?.text}}</p>
+<div class="container">
+  <div *ngFor='let msg of previousMessages' class="containerBox">
+    <div class="text-box-reply-pari">
+        <p [ngStyle]="{'font-family': msg.fontfamily, 'font-size': msg.fontsize + 'em'}">{{msg.text}}</p>
     </div>
-    <img  *ngIf='previousMessages' class="img-responsive" src="../assets/dinos_reply_pari.png"/>
+    <img class="img-responsive" src="../assets/dinos_reply_dispari.png"/>
   </div>
   <div class="containerBox">
     <div class="text-box">
